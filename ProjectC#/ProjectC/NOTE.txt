@@ -1,0 +1,16 @@
+-----------------------------------------------------------------SHELLEXECUTION-------
+This property UseShellExecute is related to the use of the ShellExecute function in Windows, that is, if you mark true , the Process class will use the ShellExecute otherwise, it will use CreateProcess .
+
+CreateProcess
+This is your case and will use the CreateProcess function, it is a much more accurate way to start a process - it does not search the path, and will allow you to redirect the default input or output of the child process. It will not work when trying to open files as will be explained in ShellExecute .
+
+You should set UseShellExecute to false when:
+
+You simply want to open a program;
+ShellExecute
+The ShellExecute function is used to open a specific file (even a program) - such as when typing something in the Windows Run command, for example when we want:
+
+Open documents where extensions have already been associated with a program - simply type c: \ test \ fat.docx that Windows will open the WinWord program.
+Run batch files - as in cmd.exe ;
+Run any command in the PATH;
+Use when you want to open documents, urls or batch files etc ... instead of having to explicitly pass the path from where the program was installed.
